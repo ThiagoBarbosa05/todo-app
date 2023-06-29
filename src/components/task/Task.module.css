@@ -1,0 +1,104 @@
+.taskBox {
+  width: 100%;
+  margin-top: 1.5rem;
+}
+
+.task {
+  width: 100%;
+  padding: 1rem;
+  background-color: var(--gray-500);
+  border-radius: 8px;
+  border: 1px solid var(--gray-400);
+  box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.06);
+  display: flex;
+  align-items: flex-start;
+  
+}
+
+.task button {
+  line-height: 0;
+  background: transparent;
+  border: none;
+  color: var(--gray-300);
+}
+
+.checkContainer input[type="checkbox"] {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+
+}
+
+.checkContainer {
+  position: relative;
+}
+
+.checkContainer label {
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+}
+
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  height: 1.5rem;
+  width: 1.5rem;
+  background: transparent;
+  border-radius: 50%;
+  border: 1px solid var(--blue);
+  transition: .2s;
+}
+
+.checkContainer:hover input ~ .checkmark {
+  border-color: var(--blue-dark);
+  cursor: pointer;
+}
+
+.checkContainer input:checked ~ .checkmark {
+  background-color: var(--purple-dark);
+}
+
+.checkContainer .checkmark:after {
+  content: "";
+  position: absolute;
+  left: 40%;
+  top: 30%;
+  width: 3px;
+  height: 7px;
+  border: solid white;
+  border-width: 0 1px 1px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+  display: none;
+}
+
+.checkContainer input:checked ~ .checkmark:after {
+  display: block;
+}
+
+.task .content {
+  color: var(--gray-100);
+  font-size: .875rem;
+  line-height: 1.4;
+  margin-left: 1.5rem;
+  padding-inline: .75rem;
+}
+
+.task .checked {
+  color: var(--gray-300);
+  text-decoration: line-through;
+  font-size: .875rem;
+  line-height: 1.4;
+  margin-left: 1.5rem;
+  padding-inline: .75rem;
+}

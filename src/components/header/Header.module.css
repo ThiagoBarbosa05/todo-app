@@ -1,0 +1,25 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .75rem;
+  background-color: var(--gray-700);
+  height: 12.5rem;
+}
+
+.header  img {
+  width: 1.375rem;
+  height: 2.25rem;
+}
+
+.textLogo {
+  font-size: 2.5rem;
+  color: var(--blue);
+  font-style: normal;
+  font-weight: 900;
+  line-height: normal;
+}
+
+.textLogo span {
+  color: var(--purple-dark)
+}
