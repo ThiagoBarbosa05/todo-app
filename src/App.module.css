@@ -70,6 +70,10 @@
   color: var(--purple);
 }
 
+.taskContainer {
+  margin-top: 1.5rem;
+}
+
 @media (max-width: 768px) {
   html {
     font-size: 87.5%;

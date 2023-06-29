@@ -2,17 +2,30 @@ import { Trash } from "phosphor-react";
 import { useState, ChangeEvent } from "react";
 import styles from "./Task.module.css";
 
-export function Task() {
+export interface TaskType {
+  id: string;
+  content: string;
+  isCompleted: boolean;
+}
+
+interface TaskProps {
+  task: TaskType
+  onDeletedTask: (taskId: string) => void
+}
+
+export function Task({task, onDeletedTask}: TaskProps) {
   const [isChecked, setIsChecked] = useState(false);
 
   function handleCheckedChange() {
     setIsChecked(!isChecked);
   }
 
-  console.log(isChecked);
+ function handleDeletedTask() {
+  onDeletedTask(task.id)
+ }
 
   return (
-    <section className={styles.taskBox}>
+    
       <div className={styles.task}>
         <div className={styles.checkContainer}>
           <label>
@@ -22,14 +35,12 @@ export function Task() {
         </div>
 
         <p className={isChecked ? styles.checked : styles.content}>
-              Integer urna interdum massa libero auctor neque turpis turpis
-              semper. Duis vel sed fames integer.
-            </p>
+          {task.content}
+        </p>
 
-        <button>
+        <button onClick={handleDeletedTask}>
           <Trash size={24} />
         </button>
       </div>
-    </section>
   );
 }
