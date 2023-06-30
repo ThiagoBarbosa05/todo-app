@@ -29,7 +29,6 @@ import { Task, TaskType } from "./components/task";
 function App() {
   const [tasks, setTasks] = useState<TaskType[]>([]);
   const [newTask, setNewTask] = useState("");
-  const [completedTasks, setCompletedTasks] = useState([]);
 
   function handleChangeNewtask(event: ChangeEvent<HTMLInputElement>) {
     setNewTask(event.target.value);
