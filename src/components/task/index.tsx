@@ -48,3 +48,4 @@ export function Task({task, onDeletedTask, onTaskChecked}: TaskProps) {
       </div>
   );
 }
+
