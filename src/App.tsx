@@ -26,11 +26,10 @@ import { Task, TaskType } from "./components/task";
 //   },
 // ];
 
-const task: TaskType[] = [];
-
 function App() {
-  const [tasks, setTasks] = useState(task);
+  const [tasks, setTasks] = useState<TaskType[]>([]);
   const [newTask, setNewTask] = useState("");
+  const [completedTasks, setCompletedTasks] = useState([]);
 
   function handleChangeNewtask(event: ChangeEvent<HTMLInputElement>) {
     setNewTask(event.target.value);
@@ -52,9 +51,19 @@ function App() {
     setTasks(tasksWithoutDeletedOne);
   }
 
-  const totalTasks = tasks.length;
+  function taskChecked(id: string, isChecked: boolean) {
+    const updateTasks = tasks.map((task) => {
+      if (task.id === id) {
+        return { ...task, isCompleted: isChecked };
+      }
+      return task;
+    });
+    setTasks(updateTasks);
+  }
 
-  console.log(newTask);
+  const totalTasks = tasks.length;
+  const isNewTaskEmpty = newTask.length === 0;
+  const totalCompletedTasks = tasks.filter((task) => task.isCompleted).length;
 
   return (
     <div>
@@ -68,7 +77,7 @@ function App() {
             onChange={handleChangeNewtask}
             value={newTask}
           />
-          <button type="submit">
+          <button type="submit" disabled={isNewTaskEmpty}>
             Criar <PlusCircle size={16} />
           </button>
         </form>
@@ -78,7 +87,14 @@ function App() {
             Tarefas criadas <span>{totalTasks}</span>
           </p>
           <p>
-            Concluídas <span>0</span>
+            Concluídas{" "}
+            {totalTasks === 0 || totalCompletedTasks === 0 ? (
+              <span>0</span>
+            ) : (
+              <span>
+                {totalCompletedTasks} de {totalTasks}
+              </span>
+            )}
           </p>
         </div>
 
@@ -88,7 +104,12 @@ function App() {
         ) : (
           <section className={styles.taskContainer}>
             {tasks.map((task) => (
-              <Task key={task.id} task={task} onDeletedTask={deleteTask} />
+              <Task
+                key={task.id}
+                task={task}
+                onDeletedTask={deleteTask}
+                onTaskChecked={taskChecked}
+              />
             ))}
           </section>
         )}

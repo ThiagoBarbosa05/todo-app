@@ -1,5 +1,5 @@
 import { Trash } from "phosphor-react";
-import { useState, ChangeEvent } from "react";
+import { useState } from "react";
 import styles from "./Task.module.css";
 
 export interface TaskType {
@@ -11,18 +11,22 @@ export interface TaskType {
 interface TaskProps {
   task: TaskType
   onDeletedTask: (taskId: string) => void
+  onTaskChecked: (id: string, isChecked: boolean) => void
 }
 
-export function Task({task, onDeletedTask}: TaskProps) {
+export function Task({task, onDeletedTask, onTaskChecked}: TaskProps) {
   const [isChecked, setIsChecked] = useState(false);
+ 
 
   function handleCheckedChange() {
+    onTaskChecked(task.id, !isChecked);
     setIsChecked(!isChecked);
   }
 
  function handleDeletedTask() {
   onDeletedTask(task.id)
  }
+
 
   return (
     
