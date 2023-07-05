@@ -99,7 +99,6 @@
   line-height: 1.6;
   margin-left: 1.5rem;
   padding-inline: .75rem;
-  
 }
 
 .task .checked {
@@ -107,7 +106,7 @@
   color: var(--gray-300);
   text-decoration: line-through;
   font-size: .875rem;
-  line-height: 1.4;
+  line-height: 1.6;
   margin-left: 1.5rem;
   padding-inline: .75rem;
 }
