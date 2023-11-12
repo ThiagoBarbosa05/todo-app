@@ -15,7 +15,7 @@
 The following tools were used to build the project:
 
 - [React](https://react.dev/)
-- [Date-fns](https://date-fns.org/)
+- [uuidv4](https://www.npmjs.com/package/uuidv4)
 - [Phosphor-react](https://phosphoricons.com/)
 - [Eslint](https://eslint.org/)
 - [TypeScript](https://www.typescriptlang.org/)
